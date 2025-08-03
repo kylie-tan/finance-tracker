@@ -1,8 +1,20 @@
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
+export default function Home
+() {
   return (
-		<UserButton/>
+		<div>
+			Dashboard Page
+		</div>
 	)
 }
+
+
+
+// export default function Home
+// () {
+//   return (
+// 		<UserButton/>
+// 	)
+// }
