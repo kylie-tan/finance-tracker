@@ -42,7 +42,6 @@ const routes = [
 export const Navigation = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	// const router = useRouter();
 	const router = useRouter();
 	const pathname = usePathname();
 	const isMobile = useMedia("(max-width: 1024px)", false);
