@@ -4,16 +4,22 @@ import { defineConfig } from "drizzle-kit";
 config({ path: ".env.local" });
 
 export default defineConfig({
-  schema: "./db/schema.ts",
-  // 🟢 ADD the 'dialect' property
   dialect: "postgresql",
-  // 🟢 The 'driver' should be 'pg' for PostgreSQL
+  schema: "./db/schema.ts",
+
   dbCredentials: {
     connectionString: process.env.DATABASE_URL!,
   },
-  verbose: true,
-  strict: true,
 });
+
+import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+  dialect: "postgresql",
+  schema: "./src/schema.ts",
+  out: "./drizzle",
+});
+
 
 // import { config } from "dotenv";
 // import { defineConfig } from "drizzle-kit";
