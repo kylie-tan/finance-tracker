@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { DatePicker } from "@/components/date-picker";
+import { convertAmountToMiliunits } from "@/lib/utils";
 import { AmountInput } from "@/components/amount-input";
 import { insertTransactionSchema } from "@/db/schema";
 import {
@@ -61,15 +62,24 @@ export const TransactionForm = ({
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
+			date: new Date(),
+			accountId: '',
+			categoryId: '',
 			payee: '',
 			amount: '',
+			notes: '',
 			...defaultValues,
 		},
 	});
 
 	const handleSubmit = (values: FormValues) => {
-		console.log({ values });
-		// onSubmit(values);
+		const amount = parseFloat(values.amount);
+		const amountInMiliunits = convertAmountToMiliunits(amount);
+
+		onSubmit({
+			...values,
+			amount: amountInMiliunits,
+		});
 	};
 
 	const handleDelete = () => {
@@ -188,14 +198,14 @@ export const TransactionForm = ({
 									{...field}
 									value={field.value ?? ""}
 									disabled={disabled}
-									placeholder="Optonal notes"
+									placeholder="Optonial notes"
 								/>
 							</FormControl>
 						</FormItem>
 					)}
 				/>
 				<Button className="w-full" disabled={disabled}>
-					{id ? "Save Changes" : "Create account"}
+					{id ? "Save Changes" : "Create transaction"}
 				</Button>
 				{!!id && <Button
 					type="button"
@@ -205,7 +215,7 @@ export const TransactionForm = ({
 					variant={"outline"}
 				>
 					<Trash className="size-4 mr-2"/>
-					Delete account
+					Delete transaction
 				</Button>}
 			</form>
 		</Form>
