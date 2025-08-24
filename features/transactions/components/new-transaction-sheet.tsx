@@ -56,7 +56,7 @@ export const NewTransactionSheet = () => {
 		categoryMutation.isPending ||
 		accountMutation.isPending;
 
-		const isLoading =
+	const isLoading =
 		categoryQuery.isLoading ||
 		accountQuery.isLoading;
 
@@ -86,12 +86,12 @@ export const NewTransactionSheet = () => {
 						</div>
 					) : (
 						<TransactionForm
-						onSubmit={onSubmit}
-						disabled={isPending}
-						categoryOptions={categoryOptions}
-						onCreateCategory={onCreateCategory}
-						accountOptions={accountOptions}
-						onCreateAccount={onCreateAccount}
+							onSubmit={onSubmit}
+							disabled={isPending}
+							categoryOptions={categoryOptions}
+							onCreateCategory={onCreateCategory}
+							accountOptions={accountOptions}
+							onCreateAccount={onCreateAccount}
 						/>
 					)
 				}

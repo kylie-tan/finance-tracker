@@ -28,6 +28,7 @@ export const AmountInput = ({
 
 	const onReverseValue = () => {
 		if (!value) return;
+		
 		const newValue = parseFloat(value) *-1;
 		onChange(newValue.toString());
 	};

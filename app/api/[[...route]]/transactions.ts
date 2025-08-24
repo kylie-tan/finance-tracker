@@ -126,9 +126,14 @@ const app = new Hono()
 				return c.json({ error: "Unathorized" }, 401);
 			}
 
+			const transactionValues = {
+        ...values,
+        categoryId: values.categoryId === "" ? null : values.categoryId
+    };
+
 			const [data] = await db.insert(transactions).values({
 				id: createId(),
-				...values
+				...transactionValues,
 			}).returning();
 
 			return c.json({ data });

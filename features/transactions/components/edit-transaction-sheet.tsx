@@ -106,7 +106,7 @@ export const EditTransactionSheet = () => {
 		accountId: "",
 		categoryId: "",
 		amount: "",
-		date: "",
+		date: new Date(),
 		payee: "",
 		notes: "",
 	};
@@ -118,7 +118,7 @@ export const EditTransactionSheet = () => {
 				<SheetContent className="space-y-4">
 					<SheetHeader>
 						<SheetTitle>
-							Edit Account
+							Edit Transaction
 						</SheetTitle>
 						<SheetDescription>
 							Edit an existing transaction
