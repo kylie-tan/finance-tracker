@@ -4,6 +4,7 @@ import { categories } from "@/db/schema";
 import { useOpenCategory } from "@/features/categories/hooks/use-open-category";
 
 import { cn } from "@/lib/utils";
+import { useOpenTransaction } from "@/features/transactions/hooks/use-open-transaction";
 
 type Props = {
 	id: string;
@@ -17,10 +18,13 @@ export const CategoryColumn = ({
 	categoryId
 }: Props) => {
 	const { onOpen: onOpenCategory } = useOpenCategory();
+	const { onOpen: onOpenTransaction } = useOpenTransaction();
 
 	const onClick = () => {
 		if (categoryId) {
 			onOpenCategory(categoryId);
+		} else {
+			onOpenTransaction(id);
 		}
 	};
 
