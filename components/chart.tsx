@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { AreaChart, BarChart3, FileSearch, LineChart } from "lucide-react";
+import { AreaChart, BarChart3, FileSearch, LineChart, Loader2 } from "lucide-react";
+
+import { Skeleton } from "@/components/ui/skeleton";
+
+
+import { AreaVariant } from "@/components/area-variant";
+import { BarVariant } from "@/components/bar-variant";
+import { LineVariant } from "@/components/line-variant";
 
 import {
 	Select,
@@ -14,9 +21,6 @@ import {
 	CardHeader,
 	CardTitle
 } from "@/components/ui/card";
-import { AreaVariant } from "@/components/area-variant";
-import { BarVariant } from "@/components/bar-variant";
-import { LineVariant } from "@/components/line-variant";
 
 type Props = {
 	data?: {
@@ -94,4 +98,20 @@ export const Chart = ({ data = [] }: Props) => {
 			</CardContent>
 		</Card>
 	);
+};
+
+export const ChartLoading = () => {
+  return (
+    <Card className="border-none drop-shadow-sm">
+      <CardHeader className="flex justify-between space-y-2 lg:flex-row lg:items-center lg:space-y-0">
+        <Skeleton className="h-8 w-48" />
+        <Skeleton className="h-8 w-full lg:w-[120px]" />
+      </CardHeader>
+      <CardContent>
+        <div className="flex h-[350px] w-full items-center justify-center">
+          <Loader2 className="size-6 animate-spin text-slate-300" />
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
